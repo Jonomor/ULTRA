@@ -1,0 +1,28 @@
+{
+  "extends": ["development"],
+  "hints": {
+    "compat-api/html": [
+      "default",
+      { "ignore": ["meta[name=theme-color]"] }
+    ],
+    "compat-api/css": [
+      "default",
+      { "ignore": ["text-size-adjust"] }
+    ],
+    "compat-api/javascript": "default",
+    "axe": "default",
+    "performance-budget": [
+      "error",
+      {
+        "resourceSizes": [
+          { "resourceType": "script", "maxSize": 150000 },
+          { "resourceType": "image", "maxSize": 300000 }
+        ],
+        "timings": [
+          { "metric": "first-contentful-paint", "maxTime": 2000 },
+          { "metric": "interactive", "maxTime": 3500 }
+        ]
+      }
+    ]
+  }
+}
