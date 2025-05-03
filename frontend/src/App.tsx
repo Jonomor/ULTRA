@@ -5,22 +5,27 @@ import { getFcmToken, setupOnMessage } from "./lib/firebase";
 export default function App() {
   const [redirect, setRedirect] = useState<string | null>(null);
 
+  const BACKEND_URL =
+    import.meta.env.PROD
+      ? import.meta.env.VITE_BACKEND_URL // Production: use .env variable set in Vercel
+      : "http://localhost:4000";         // Local dev: use localhost
+
   useEffect(() => {
-    fetch('/api/dashboard', { credentials: 'include' })
-      .then(res => res.json())
-      .then(data => {
+    fetch(`${BACKEND_URL}/api/dashboard`, { credentials: "include" })
+      .then((res) => res.json())
+      .then((data) => {
         if (data.role === "admin") setRedirect("/admin");
         else setRedirect("/dashboard");
       })
       .catch(() => setRedirect("/login"));
-  }, []);
+  }, [BACKEND_URL]);
 
   useEffect(() => {
     Notification.requestPermission().then((permission) => {
       if (permission === "granted") {
         getFcmToken().then((token) => {
           if (token) {
-            fetch("/api/fcm-token", {
+            fetch(`${BACKEND_URL}/api/fcm-token`, {
               method: "POST",
               body: JSON.stringify({ token }),
               headers: { "Content-Type": "application/json" },
@@ -36,7 +41,7 @@ export default function App() {
         console.warn("Notification permission denied");
       }
     });
-  }, []);
+  }, [BACKEND_URL]);
 
   if (!redirect) return <div className="text-white p-8">Loading...</div>;
 
