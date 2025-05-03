@@ -1,5 +1,5 @@
 // pages/bots/[bot].tsx
-
+import React from "react";
 import { useParams } from 'react-router-dom'
 
 type BotKey = 'ultra' | 'pro'

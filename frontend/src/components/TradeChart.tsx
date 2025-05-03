@@ -1,4 +1,6 @@
 // src/components/TradeChart.tsx
+import React from "react";
+
 import { useEffect, useRef, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { io, Socket } from 'socket.io-client';
@@ -14,9 +16,10 @@ import {
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-const socket: Socket = io('http://localhost:5173', {
+const socket: Socket = io(import.meta.env.VITE_SOCKET_URL || 'http://localhost:4000', {
   withCredentials: true,
 });
+
 
 export default function TradeChart() {
   const [buyCount, setBuyCount] = useState(0);

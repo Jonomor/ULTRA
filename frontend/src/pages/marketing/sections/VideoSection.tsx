@@ -1,3 +1,5 @@
+import React from "react";
+
 export default function VideoSection() {
   return (
     <section className="bg-black text-white py-20 px-6">

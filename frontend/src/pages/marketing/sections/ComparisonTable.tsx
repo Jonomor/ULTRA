@@ -1,5 +1,5 @@
 // src/pages/marketing/sections/ComparisonTable.tsx
-
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import FilterBar from "../../../components/FilterBar";
 import { useFilter } from "../../../context/FilterContext";

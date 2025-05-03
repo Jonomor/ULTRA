@@ -1,4 +1,5 @@
 // src/components/dashboard/SignalTable.tsx
+import React from "react";
 export default function SignalTable() {
   const mockSignals = [
     { asset: "BTCUSDT", type: "BUY", confidence: 93, timestamp: "2025-04-21T14:00:00Z" },

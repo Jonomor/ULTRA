@@ -1,4 +1,5 @@
 // src/components/AdminSidebar.tsx
+import React from "react";
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu } from 'lucide-react';

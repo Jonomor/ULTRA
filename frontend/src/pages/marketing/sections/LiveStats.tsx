@@ -4,6 +4,7 @@ import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 import { useCountUp } from "../../../hooks/useCountUp";
 import "@/styles/stat-animations.css"; // sparkle + glow styles
+import React from "react";
 
 const stats = [
   { label: "Win Rate", value: 92.3, suffix: "%" },

@@ -1,4 +1,6 @@
 // src/pages/privacy.tsx
+import React from "react";
+
 export default function Privacy() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-10 text-white">

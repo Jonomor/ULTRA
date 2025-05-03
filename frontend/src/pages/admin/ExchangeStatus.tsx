@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import ExchangeCard from '../../components/ExchangeCard';
 import BalanceChart from '../../components/BalanceChart';
 import { io } from 'socket.io-client';
-
+import React from "react";
 
 
 export default function ExchangeStatusPage() {
@@ -30,7 +30,10 @@ export default function ExchangeStatusPage() {
     fetchStatus();
     fetchBalanceHistories();
   
-    const socket = io('http://localhost:4000');
+    const socket = io(import.meta.env.VITE_SOCKET_URL || 'http://localhost:4000', {
+      withCredentials: true,
+    });
+    
   
     socket.on('exchange:update', (data) => {
       setStatus(data);

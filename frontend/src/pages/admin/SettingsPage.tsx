@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../../lib/supabaseClient"; // ✅ Fixed path
+import React from "react";
 
 const DEFAULT_PRESET = {
   breakLen: 20,

@@ -1,4 +1,5 @@
 // src/components/dashboard/HealthStatus.tsx
+import React from "react";
 export default function HealthStatus() {
     return (
       <div className="bg-zinc-800 p-4 rounded grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">

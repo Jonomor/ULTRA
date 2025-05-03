@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import React from "react";
 export default function GPTAssistant() {
   const [question, setQuestion] = useState("");
   const [response, setResponse] = useState("Ask me anything about the ULTRA+ system, signals, or performance.");
@@ -10,15 +10,14 @@ export default function GPTAssistant() {
     setLoading(true);
     setResponse("Thinking...");
 
-    try {
-      const res = await fetch("http://localhost:3000/api/assistant", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer your_admin_token",
-        },
-        body: JSON.stringify({ question }),
-      });
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/assistant`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${import.meta.env.VITE_ADMIN_TOKEN}`,
+      },
+      body: JSON.stringify({ question }),
+    });
 
       const data = await res.json();
       setResponse(data.answer || "No response.");

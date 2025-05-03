@@ -3,6 +3,7 @@ import StatCards from "../components/dashboard/StatCards";
 import HealthStatus from "../components/dashboard/HealthStatus";
 import SignalTable from "../components/dashboard/SignalTable";
 import FCMHandler from "../components/FCMHandler";
+import React from "react";
 
 import {
   Chart as ChartJS,

@@ -1,6 +1,6 @@
 // src/components/Footer.tsx
 import { Link } from 'react-router-dom';
-
+import React from "react";
 export default function Footer() {
   return (
     <footer className="bg-gray-100/30 text-center text-sm text-gray-600 py-4 mt-10">

@@ -1,3 +1,4 @@
+import React from "react";
 const bots = [
     { name: 'ULTRA+', color: 'text-red-500', description: 'Breakout sniper with filter intelligence.' },
     { name: 'PRO+', color: 'text-purple-400', description: 'AI-tuned with macro + regime control.' },

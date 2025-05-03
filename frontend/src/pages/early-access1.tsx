@@ -1,5 +1,17 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion"; // ✅ Add framer-motion
+import { moimport React from "react";tion } from "framer-motion"; // ✅ Add framer-motion
+useEffect(() => {
+  const API = import.meta.env.VITE_API_URL;
+
+  fetch(`${API}/dashboard`, {
+    credentials: 'include',
+  })
+    .then(res => res.json())
+    .then(data => {
+      // handle data
+    });
+}, []);
+
 
 // ✅ Tell TypeScript about window.ml
 declare global {

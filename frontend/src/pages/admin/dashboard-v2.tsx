@@ -3,6 +3,7 @@ import AdminSidebar from "../../components/AdminSidebar";
 import AdminRouteGuard from "../../components/AdminRouteGuard";
 import { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
+import React from "react";
 
 export default function AdminDashboardV2() {
   const [dispatch, setDispatch] = useState(false);

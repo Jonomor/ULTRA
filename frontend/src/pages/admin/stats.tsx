@@ -1,7 +1,8 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import SignalChart from "../../components/SignalChart";
 import PushTestButton from "../../components/PushTestButton"; // ✅ New
-import GPTAssistant from "../../components/GPTAssistant"; 
+import GPTAssistant from "../../components/GPTAssistant";
 
 export default function AdminStats() {
   const [stats, setStats] = useState({
@@ -11,17 +12,15 @@ export default function AdminStats() {
   });
 
   useEffect(() => {
-    fetch("http://localhost:5173/api/admin/state", {
+    fetch(`${import.meta.env.VITE_API_URL}/admin/state`, {
       headers: {
-        Authorization: "Bearer your_admin_token",
+        Authorization: `Bearer ${import.meta.env.VITE_ADMIN_TOKEN}`,
       },
     })
       .then((res) => res.json())
-      .then((data) =>
-        setStats((prev) => ({ ...prev, ...data }))
-      );
-
-    fetch("http://localhost:5173/api/signals", {
+      .then((data) => setStats((prev) => ({ ...prev, ...data })));
+  
+    fetch(`${import.meta.env.VITE_API_URL}/signals`, {
       credentials: "include",
     })
       .then((res) => res.json())
@@ -29,6 +28,7 @@ export default function AdminStats() {
         setStats((prev) => ({ ...prev, totalSignals: signals.length }))
       );
   }, []);
+
 
   return (
     <div className="p-8 bg-black text-white min-h-screen">

@@ -1,6 +1,6 @@
 import { Navigate } from 'react-router-dom';
 import { ReactNode } from 'react';
-
+import React from "react";
 interface Props {
   children: ReactNode;
 }

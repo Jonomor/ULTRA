@@ -1,4 +1,5 @@
 // src/pages/marketing/sections/StickyPricingStrip.tsx
+import React from "react";
 
 export default function StickyPricingStrip() {
     return (

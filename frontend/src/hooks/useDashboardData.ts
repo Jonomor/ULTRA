@@ -22,30 +22,33 @@ export function useDashboardData() {
   });
 
   useEffect(() => {
-    fetch('http://localhost:4000/api/dashboard', { credentials: 'include' })
+    const API = import.meta.env.VITE_API_URL;
+  
+    fetch(`${API}/dashboard`, { credentials: 'include' })
       .then(res => res.json())
       .then(data => {
         setUsername(data.username);
         setRole(data.role);
         setMessage(data.message);
       });
-
-    fetch('http://localhost:4000/api/admin/state', { credentials: 'include' })
+  
+    fetch(`${API}/admin/state`, { credentials: 'include' })
       .then(res => res.json())
       .then(data => {
         setConfig(prev => ({ ...prev, dispatch: data.dispatch, regime: data.regime }));
       });
-
-    fetch('http://localhost:4000/api/admin/override', { credentials: 'include' })
+  
+    fetch(`${API}/admin/override`, { credentials: 'include' })
       .then(res => res.json())
       .then(data => {
         setConfig(prev => ({ ...prev, ...data }));
       });
-
-    fetch('http://localhost:4000/api/signals/recent', { credentials: 'include' })
+  
+    fetch(`${API}/signals/recent`, { credentials: 'include' })
       .then(res => res.json())
       .then(data => setLogs(data.recent || []));
   }, []);
+  
 
   useEffect(() => {
     socket.on('connect', () => {

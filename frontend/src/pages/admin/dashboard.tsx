@@ -1,6 +1,7 @@
 // src/pages/admin/dashboard.tsx
 import AdminSidebar from "../../components/AdminSidebar";
 import AdminRouteGuard from "../../components/AdminRouteGuard";
+import React from "react";
 
 export default function AdminDashboard() {
   return (

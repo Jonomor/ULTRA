@@ -1,5 +1,5 @@
 // src/pages/marketing/sections/BotProfiles.tsx
-
+import React from "react";
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import FilterBar from '../../../components/FilterBar'; // 🆕 Import FilterBar

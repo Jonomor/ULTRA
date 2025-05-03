@@ -1,7 +1,7 @@
 // src/pages/charts/ultra.tsx
 import withAuth from "../../utils/withAuth";
 import StrategyTabs from "../../components/StrategyTabs";
-
+import React from "react";
 
 function UltraPage() {
   return (

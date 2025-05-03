@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import React from "react";
 
 type Signal = {
   asset: string;
@@ -21,17 +22,19 @@ export function useProDashboardData() {
   useEffect(() => {
     async function fetchData() {
       try {
+        const API = import.meta.env.VITE_API_URL;
+  
         // ✅ Fetch AI signals
-        const signalRes = await fetch("http://localhost:4000/api/pro/signals/recent", {
-          credentials: "include", // 🔐 Include cookie
+        const signalRes = await fetch(`${API}/pro/signals/recent`, {
+          credentials: "include",
         });
         if (!signalRes.ok) throw new Error("Failed to fetch signals");
         const signalData = await signalRes.json();
         setSignals(signalData.signals || []);
-
+  
         // ✅ Fetch admin overrides
-        const overrideRes = await fetch("http://localhost:4000/api/admin/override", {
-          credentials: "include", // 🔐 Include cookie
+        const overrideRes = await fetch(`${API}/admin/override`, {
+          credentials: "include",
         });
         if (!overrideRes.ok) throw new Error("Failed to fetch overrides");
         const overrideData = await overrideRes.json();
@@ -40,6 +43,14 @@ export function useProDashboardData() {
           filterOverride: overrideData.filterOverride,
           forcedRegime: overrideData.forcedRegime || "none",
         });
+      } catch (err) {
+        console.error("Fetch error:", err);
+      }
+    }
+  
+    fetchData();
+  }, []);
+  
       } catch (err: any) {
         console.error("📉 useProDashboardData Error:", err);
         setError(err.message || "Unknown error");

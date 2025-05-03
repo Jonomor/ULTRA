@@ -1,5 +1,5 @@
 // src/pages/marketing/sections/Features.tsx
-
+import React from "react";
 import { motion } from "framer-motion";
 
 interface FeaturesProps {

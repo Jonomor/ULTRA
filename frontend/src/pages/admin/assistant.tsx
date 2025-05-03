@@ -2,6 +2,7 @@
 import { useState } from "react";
 import AdminSidebar from "../../components/AdminSidebar";
 import AdminRouteGuard from "../../components/AdminRouteGuard";
+import React from "react";
 
 export default function AdminAssistant() {
   const [input, setInput] = useState('');
@@ -15,7 +16,10 @@ export default function AdminAssistant() {
     setLoading(true);
     setInput('');
 
-    const eventSource = new EventSource(`http://localhost:4000/api/assistant?q=${encodeURIComponent(input)}`);
+    const API = import.meta.env.VITE_API_URL;
+
+const eventSource = new EventSource(`${API}/assistant?q=${encodeURIComponent(input)}`);
+
 
     let assistantReply = '';
 

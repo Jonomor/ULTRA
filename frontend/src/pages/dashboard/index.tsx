@@ -1,5 +1,5 @@
 // pages/index.tsx
-
+import React from "react";
 import Header from '../../components/Header'
 import BotProfiles from '../../components/BotProfiles'
 import ChartPreview from '../../components/ChartPreview'

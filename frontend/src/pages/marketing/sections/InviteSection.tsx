@@ -1,5 +1,5 @@
 // src/pages/marketing/sections/InviteSection.tsx
-
+import React from "react";
 interface InviteSectionProps {
   plan?: "ultra" | "pro";
 }

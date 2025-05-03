@@ -1,4 +1,5 @@
 import { useState } from "react";
+import React from "react";
 
 const faqs = [
   { question: "Is this bot beginner-friendly?", answer: "Yes, ULTRA+ is engineered for both beginners and full-time traders." },
