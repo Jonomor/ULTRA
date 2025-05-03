@@ -1,12 +1,28 @@
-// src/App.tsx
 import { useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
+import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import { getFcmToken, setupOnMessage } from "./lib/firebase";
+
+// Page imports
+import Dashboard from "./pages/dashboard";
+import Admin from "./pages/admin";
+import Login from "./pages/login";
+import LandingPage from "./pages/marketing/LandingPage";
 
 export default function App() {
   const [redirect, setRedirect] = useState<string | null>(null);
 
-  // ✅ Push FCM token to backend
+  // 🔐 Role-based Redirect Logic
+  useEffect(() => {
+    fetch('/api/dashboard', { credentials: 'include' })
+      .then(res => res.json())
+      .then(data => {
+        if (data.role === "admin") setRedirect("/admin");
+        else setRedirect("/dashboard");
+      })
+      .catch(() => setRedirect("/login"));
+  }, []);
+
+  // 🔥 FCM Setup
   useEffect(() => {
     getFcmToken().then((token) => {
       if (token) {
@@ -24,17 +40,17 @@ export default function App() {
     });
   }, []);
 
-  // ✅ Role-based redirect
-  useEffect(() => {
-    fetch('http://localhost:4000/api/dashboard', { credentials: 'include' })
-      .then(res => res.json())
-      .then(data => {
-        if (data.role === "admin") setRedirect("/admin");
-        else setRedirect("/dashboard");
-      })
-      .catch(() => setRedirect("/login"));
-  }, []);
-
   if (!redirect) return <div className="text-white p-8">Loading...</div>;
-  return <Navigate to={redirect} />;
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="*" element={<Navigate to={redirect} />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
