@@ -24,9 +24,10 @@ import {
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 // 🔥 Setup WebSocket
-const socket: Socket = io('http://localhost:4000', {
+const socket: Socket = io(import.meta.env.VITE_API_URL!, {
   withCredentials: true,
 });
+
 
 // 🔥 MLModelSuggestions Component
 function MLModelSuggestions() {
@@ -42,11 +43,12 @@ function MLModelSuggestions() {
       fallbackActive: false,
     };
 
-    const res = await fetch('http://localhost:4000/api/model/predict', {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/model/predict`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(features),
     });
+    ;
 
     const data = await res.json();
     setSuggestedSettings(data);
@@ -118,11 +120,14 @@ export default function Dashboard() {
 
   // ✅ Auth Check
   useEffect(() => {
-    fetch('http://localhost:4000/api/dashboard', { credentials: 'include' })
+    const API = import.meta.env.VITE_API_URL;
+  
+    fetch(`${API}/api/dashboard`, { credentials: 'include' })
       .then((res) => {
         if (!res.ok) throw new Error('Unauthorized');
         return res.json();
       })
+  
       .then((data) => {
         setMessage(data.message);
         setUsername(data.username);
@@ -133,14 +138,16 @@ export default function Dashboard() {
 
   // ✅ Admin Config
   useEffect(() => {
-    fetch('http://localhost:4000/api/admin/state', { credentials: 'include' })
+    const API = import.meta.env.VITE_API_URL;
+
+    fetch(`${API}/api/admin/state`, { credentials: 'include' })
       .then((res) => res.json())
       .then((data) => {
         setDispatchEnabled(data.dispatch);
         setRegime(data.regime);
       });
-
-    fetch('http://localhost:4000/api/admin/override', { credentials: 'include' })
+      
+      fetch(`${API}/api/admin/override`, { credentials: 'include' })
       .then((res) => res.json())
       .then((data) => {
         setManualDispatch(data.manualDispatch);
@@ -152,31 +159,34 @@ export default function Dashboard() {
 
   // ✅ Logs
   useEffect(() => {
-    fetch('http://localhost:4000/api/signals/recent', { credentials: 'include' })
-      .then((res) => res.json())
+    const API = import.meta.env.VITE_API_URL;
+    fetch(`${API}/api/signals/recent`, { credentials: 'include' })      .then((res) => res.json())
       .then((data) => setLogs(data.recent || []));
   }, []);
 
   // ✅ ML Model Status
   useEffect(() => {
-    fetch('http://localhost:4000/api/ml/status')
-      .then((res) => res.json())
+    const API = import.meta.env.VITE_API_URL;
+    fetch(`${API}/api/ml/status`)      .then((res) => res.json())
       .then((data) => setMlStatus(data));
   }, []);
 
   // ✅ Admin Actions
   const sendTestSignal = async () => {
-    await fetch('http://localhost:4000/api/admin/test-signal', {
+    const API = import.meta.env.VITE_API_URL;
+    await fetch(`${API}/api/admin/test-signal`, {
       method: 'POST',
       credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ message: 'This is a test broadcast' }),
     });
   };
+  
 
   const toggleDispatch = async () => {
+    const API = import.meta.env.VITE_API_URL;
     const newState = !dispatchEnabled;
-    await fetch('http://localhost:4000/api/admin/dispatch', {
+    await fetch(`${API}/api/admin/dispatch`, {
       method: 'POST',
       credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
@@ -184,19 +194,23 @@ export default function Dashboard() {
     });
     setDispatchEnabled(newState);
   };
+  
 
   const updateRegime = async (newMode: string) => {
+    const API = import.meta.env.VITE_API_URL;
     setRegime(newMode);
-    await fetch('http://localhost:4000/api/admin/regime', {
+    await fetch(`${API}/api/admin/regime`, {
       method: 'POST',
       credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ mode: newMode }),
     });
   };
+  
 
   const updateOverride = async (updates: any) => {
-    const res = await fetch('http://localhost:4000/api/admin/override', {
+    const API = import.meta.env.VITE_API_URL;
+    const res = await fetch(`${API}/api/admin/override`, {
       method: 'POST',
       credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
@@ -264,13 +278,15 @@ export default function Dashboard() {
       {/* Logout */}
       <button
         onClick={() => {
-          fetch('http://localhost:4000/api/logout', {
+          const API = import.meta.env.VITE_API_URL;
+          fetch(`${API}/api/logout`, {
             method: 'POST',
             credentials: 'include',
           }).finally(() => {
             window.location.href = '/';
           });
         }}
+
         className="text-sm text-red-600 underline mt-6 block"
       >
         Log out
