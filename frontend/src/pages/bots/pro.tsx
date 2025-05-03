@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function ProPage() {
     return (
       <div className="min-h-screen bg-black text-white px-4 py-12 font-sans">

@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { Line } from "react-chartjs-2";
 import io from "socket.io-client";
 import clsx from "clsx"; // ✨ Utility for conditional classes
-import React from "react";
 
 type Signal = {
   timestamp: string;

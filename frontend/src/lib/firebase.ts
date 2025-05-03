@@ -1,5 +1,4 @@
 // src/lib/firebase.ts
-import React from "react";
 import { initializeApp } from 'firebase/app';
 import { getMessaging, getToken, onMessage, Messaging } from 'firebase/messaging';
 
@@ -38,7 +37,3 @@ export const setupOnMessage = (callback: (payload: any) => void) => {
     callback(payload);
   });
 };
-
-if ('serviceWorker' in navigator && 'PushManager' in window) {
-  navigator.serviceWorker.register('/firebase-messaging-sw.js')
-}

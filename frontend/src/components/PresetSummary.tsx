@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { supabase } from "../lib/supabaseClient"
-import React from "react";
 
 type Preset = {
   breakLen: number

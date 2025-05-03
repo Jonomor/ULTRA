@@ -1,7 +1,6 @@
 // src/pages/marketing/sections/Quiz.tsx
 import { useEffect, useRef, useState } from "react";
 import "../../../ultra-theme.css";
-import React from "react";
 
 interface QuizProps {
   onComplete: ({ persona, email }: { persona: "ultra" | "pro"; email: string }) => void;

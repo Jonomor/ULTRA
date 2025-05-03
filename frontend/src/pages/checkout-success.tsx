@@ -1,5 +1,5 @@
 // src/pages/checkout-success.tsx
-import React from "react";
+
 import { motion } from "framer-motion";
 
 export default function CheckoutSuccess() {

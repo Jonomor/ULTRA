@@ -1,6 +1,4 @@
 // src/pages/dashboard.tsx
-import React from "react";
-
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import { io, Socket } from 'socket.io-client';
@@ -26,10 +24,9 @@ import {
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 // 🔥 Setup WebSocket
-const socket: Socket = io(import.meta.env.VITE_SOCKET_URL || 'http://localhost:4000', {
+const socket: Socket = io('http://localhost:4000', {
   withCredentials: true,
 });
-
 
 // 🔥 MLModelSuggestions Component
 function MLModelSuggestions() {

@@ -1,5 +1,5 @@
 // src/pages/admin.tsx
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function Admin() {
@@ -8,23 +8,21 @@ export default function Admin() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const API = import.meta.env.VITE_API_URL;
-
-    fetch(`${API}/dashboard`, {
+    fetch('http://localhost:3000/api/dashboard', {
       credentials: 'include',
     })
-      .then((res) => {
+      .then(res => {
         if (!res.ok) throw new Error('Unauthorized');
         return res.json();
       })
-      .then((data) => {
+      .then(data => {
         if (data.role !== 'admin') {
           navigate('/403');
           return;
         }
         setMessage(`👑 Admin access granted, ${data.username}`);
       })
-      .catch((err) => {
+      .catch(err => {
         console.error('Auth error:', err);
         navigate('/login');
       })

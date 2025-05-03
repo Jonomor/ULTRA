@@ -1,5 +1,4 @@
 // src/components/charts/TradingViewTile.tsx
-import React from "react";
 import { useEffect, useRef } from "react";
 
 interface Props {

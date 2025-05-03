@@ -1,5 +1,5 @@
 // src/pages/about.tsx
-import React from "react";
+
 export default function About() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-14 text-gray-100 bg-black min-h-screen">

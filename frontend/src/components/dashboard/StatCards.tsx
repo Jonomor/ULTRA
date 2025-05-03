@@ -1,5 +1,4 @@
 // src/components/dashboard/StatCards.tsx
-import React from "react";
 export default function StatCards() {
     return (
       <>

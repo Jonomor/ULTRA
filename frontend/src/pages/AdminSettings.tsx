@@ -1,25 +1,16 @@
 // src/pages/AdminSettings.tsx
-
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import React from "react";
+
 export default function AdminSettings() {
   const navigate = useNavigate();
   const [authorized, setAuthorized] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const API = import.meta.env.VITE_API_URL;
-  
-    fetch(`${API}/dashboard`, {
+    fetch('http://localhost:4000/api/dashboard', {
       credentials: 'include',
     })
-      .then(res => res.json())
-      .then(data => {
-        // ...your logic
-      });
-  }, []);
-  
       .then(res => {
         if (!res.ok) throw new Error('Unauthorized');
         return res.json();

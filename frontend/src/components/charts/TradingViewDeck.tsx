@@ -1,5 +1,4 @@
 // src/components/charts/TradingViewDeck.tsx
-import React from "react";
 import { useRef, useState } from "react";
 import TradingViewTile from "./TradingViewTile";
 import UltraBrainDashboard from "../dashboard/UltraBrainDashboard";

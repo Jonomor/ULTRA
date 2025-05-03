@@ -1,4 +1,3 @@
-import React from "react";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import { getFcmToken, setupOnMessage } from "./lib/firebase";
@@ -35,17 +34,6 @@ export default function App() {
         });
       }
     });
-
-    useEffect(() => {
-      fetch(`${import.meta.env.VITE_API_URL}/dashboard`, { credentials: 'include' })
-        .then(res => res.json())
-        .then(data => {
-          if (data.role === "admin") setRedirect("/admin");
-          else setRedirect("/dashboard");
-        })
-        .catch(() => setRedirect("/login"));
-    }, []);
-
 
     setupOnMessage((payload) => {
       console.log("FCM Message received:", payload);

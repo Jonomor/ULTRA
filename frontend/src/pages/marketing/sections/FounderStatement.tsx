@@ -1,5 +1,5 @@
 // src/pages/marketing/sections/FounderStatement.tsx
-import React from "react";
+
 export default function FounderStatement() {
   return (
     <section className="bg-zinc-950 text-white py-20 px-6">

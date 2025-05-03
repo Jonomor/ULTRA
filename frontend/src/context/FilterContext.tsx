@@ -1,6 +1,6 @@
 // src/context/FilterContext.tsx
 import { createContext, useContext, useState, ReactNode } from "react";
-import React from "react";
+
 interface FilterContextType {
   selectedFilter: string;
   setSelectedFilter: (filter: string) => void;

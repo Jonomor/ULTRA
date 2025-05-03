@@ -1,5 +1,3 @@
-import React from "react";
-
 import { useState } from "react";
 import TradingViewTile from "./charts/TradingViewTile"; // adjust if needed
 

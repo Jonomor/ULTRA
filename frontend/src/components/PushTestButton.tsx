@@ -1,17 +1,15 @@
-import React from "react";
-
-
-const res = await fetch(`${import.meta.env.VITE_API_URL}/admin/test-signal`, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${import.meta.env.VITE_ADMIN_TOKEN}`,
-  },
-  body: JSON.stringify({
-    message: "📢 Manual broadcast: Check system visibility!",
-  }),
-});
-
+export default function PushTestButton() {
+    const sendTest = async () => {
+      const res = await fetch("http://localhost:5173/api/admin/test-signal", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer your_admin_token",
+        },
+        body: JSON.stringify({
+          message: "📢 Manual broadcast: Check system visibility!",
+        }),
+      });
 
       if (res.ok) {
         alert("📡 Test Signal Broadcasted");

@@ -1,4 +1,3 @@
-import React from "react";
 export default function ChartPreview() {
     return (
       <div className="bg-gray-900 border border-gray-700 rounded-lg p-6 text-center">

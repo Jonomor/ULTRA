@@ -1,19 +1,7 @@
 // src/pages/ChartStation.tsx
-import React, { useEffect } from "react";
 import withAuth from "../utils/withAuth";
 import TradingViewTile from "../components/charts/TradingViewTile";
 import TradingViewDeck from "../components/charts/TradingViewDeck";
-
-useEffect(() => {
-  const API = import.meta.env.VITE_API_URL;
-  fetch(`${API}/dashboard`, {
-    credentials: 'include',
-  })
-    .then(res => res.json())
-    .then(data => {
-      // handle data
-    });
-}, []);
 
 function ChartStation() {
   return (

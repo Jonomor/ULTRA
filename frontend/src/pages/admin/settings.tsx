@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import AdminSidebar from '../../components/AdminSidebar';
 import AdminRouteGuard from '../../components/AdminRouteGuard';
-import React from "react";
 
 export default function AdminSettings() {
   const [isDispatchEnabled, setDispatchEnabled] = useState(false);

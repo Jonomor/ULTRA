@@ -1,5 +1,4 @@
 // src/pages/marketing/sections/StickyCTA.tsx
-import React from "react";
 
 export default function StickyCTA() {
   return (

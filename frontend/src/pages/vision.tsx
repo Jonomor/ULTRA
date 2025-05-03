@@ -1,6 +1,5 @@
 // src/pages/vision.tsx
 import { useEffect } from 'react';
-import React from "react";
 
 export default function Vision() {
   useEffect(() => {

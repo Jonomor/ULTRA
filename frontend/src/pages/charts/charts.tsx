@@ -1,5 +1,3 @@
-import React from "react";
-
 import TradingViewDeck from "../../components/charts/TradingViewDeck";
 import withAuth from "../../utils/withAuth";
 

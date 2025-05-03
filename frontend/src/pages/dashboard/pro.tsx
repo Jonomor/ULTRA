@@ -1,6 +1,5 @@
 import { useProDashboardData } from "../../hooks/useProDashboardData";
 import OverrideControl from "../../components/OverrideControl";
-import React from "react";
 
 export default function DashboardPRO() {
   const {

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import React from "react";
+
 // @ts-ignore - Fix missing global type for SpeechRecognition
 const SpeechRecognition =
   (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition

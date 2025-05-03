@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AdminSidebar from "../../components/AdminSidebar";
 import AdminRouteGuard from "../../components/AdminRouteGuard";
-import React from "react";
 
 type Signal = {
   _id: string;

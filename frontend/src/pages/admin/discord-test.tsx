@@ -1,6 +1,5 @@
 // frontend/src/pages/admin/discord-test.tsx
 import { useState } from "react";
-import React from "react";
 
 export default function DiscordTest() {
   const [status, setStatus] = useState<string | null>(null);

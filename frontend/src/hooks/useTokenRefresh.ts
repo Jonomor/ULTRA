@@ -7,7 +7,7 @@ export const useTokenRefresh = () => {
       if (!token) return;
 
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/refresh`, {
+        const res = await fetch('http://localhost:4000/api/refresh', {
           method: 'POST',
           headers: {
             Authorization: `Bearer ${token}`,

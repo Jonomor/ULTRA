@@ -1,7 +1,7 @@
-import React from "react";
 import { useState, useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Mic, X } from 'lucide-react';
+
 
 <>
   <Mic size={20} />

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion"; // ✅ Correctly imported
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion"; // ✅ Add framer-motion
 
 // ✅ Tell TypeScript about window.ml
 declare global {
@@ -19,8 +19,8 @@ export default function EarlyAccess() {
       window.ml = window.ml || function () {
         (window.ml.q = window.ml.q || []).push(arguments);
       };
-      window.ml("account", "1455664");
-      setTimeout(() => setFormLoaded(true), 1000);
+      window.ml('account', '1455664');
+      setTimeout(() => setFormLoaded(true), 1000); // ✅ Delay for smoother fade
     };
     document.body.appendChild(script);
   }, []);

@@ -1,7 +1,6 @@
 // src/utils/withAuth.tsx
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import React from "react";
 
 export default function withAuth<T extends object>(
   Component: React.ComponentType<T>

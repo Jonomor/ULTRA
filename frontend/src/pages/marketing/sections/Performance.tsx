@@ -1,5 +1,5 @@
 // src/pages/marketing/sections/Performance.tsx
-import React from "react";
+
 import ultraChart from "../../../assets/performanceChart.png";
 import proChart from "../../../assets/performanceChart.png";
 

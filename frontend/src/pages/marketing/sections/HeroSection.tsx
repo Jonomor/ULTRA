@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import React from "react";
 
 const orbitronFont = `
   @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&display=swap');

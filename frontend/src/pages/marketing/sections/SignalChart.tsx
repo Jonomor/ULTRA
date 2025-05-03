@@ -1,5 +1,4 @@
 // src/pages/marketing/sections/SignalChart.tsx
-import React from "react";
 
 import {
   Chart as ChartJS,

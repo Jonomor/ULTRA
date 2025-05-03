@@ -21,19 +21,17 @@ export function useProDashboardData() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const API = import.meta.env.VITE_API_URL;
-
         // ✅ Fetch AI signals
-        const signalRes = await fetch(`${API}/pro/signals/recent`, {
-          credentials: "include",
+        const signalRes = await fetch("http://localhost:4000/api/pro/signals/recent", {
+          credentials: "include", // 🔐 Include cookie
         });
         if (!signalRes.ok) throw new Error("Failed to fetch signals");
         const signalData = await signalRes.json();
         setSignals(signalData.signals || []);
 
         // ✅ Fetch admin overrides
-        const overrideRes = await fetch(`${API}/admin/override`, {
-          credentials: "include",
+        const overrideRes = await fetch("http://localhost:4000/api/admin/override", {
+          credentials: "include", // 🔐 Include cookie
         });
         if (!overrideRes.ok) throw new Error("Failed to fetch overrides");
         const overrideData = await overrideRes.json();

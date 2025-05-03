@@ -32,16 +32,6 @@ function RouteTracker() {
   return null;
 }
 
-const gaId = import.meta.env.VITE_GA_ID;
-
-if (gaId) {
-  const script = document.createElement('script');
-  script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
-  document.head.appendChild(script);
-}
-
-
 function AppWrapper() {
   useTokenRefresh();
 
