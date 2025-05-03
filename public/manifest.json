@@ -1,0 +1,16 @@
+{
+  "name": "ULTRA+ By Jonomor",
+  "short_name": "ULTRA+",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#ff2c2c",
+  "description": "Automated E-mini S&P 500 scalping tool with advanced protection and performance.",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}

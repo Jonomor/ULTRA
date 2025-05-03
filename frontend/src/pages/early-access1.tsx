@@ -1,17 +1,5 @@
-import { useEffect, useState } from "react";
-import { moimport React from "react";tion } from "framer-motion"; // ✅ Add framer-motion
-useEffect(() => {
-  const API = import.meta.env.VITE_API_URL;
-
-  fetch(`${API}/dashboard`, {
-    credentials: 'include',
-  })
-    .then(res => res.json())
-    .then(data => {
-      // handle data
-    });
-}, []);
-
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion"; // ✅ Correctly imported
 
 // ✅ Tell TypeScript about window.ml
 declare global {
@@ -31,8 +19,8 @@ export default function EarlyAccess() {
       window.ml = window.ml || function () {
         (window.ml.q = window.ml.q || []).push(arguments);
       };
-      window.ml('account', '1455664');
-      setTimeout(() => setFormLoaded(true), 1000); // ✅ Delay for smoother fade
+      window.ml("account", "1455664");
+      setTimeout(() => setFormLoaded(true), 1000);
     };
     document.body.appendChild(script);
   }, []);
