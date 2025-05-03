@@ -34,11 +34,5 @@ export default defineConfig({
   },
 });
 
-const email = "user@example.com"; // or from a form/input/etc
 
-await fetch('/api/subscriber', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ email })
-});
 
