@@ -1,7 +1,12 @@
-import { useEffect } from "react";
+// src/App.tsx
+import { useEffect, useState } from "react";
+import { Navigate } from "react-router-dom";
 import { getFcmToken, setupOnMessage } from "./lib/firebase";
 
-function App() {
+export default function App() {
+  const [redirect, setRedirect] = useState<string | null>(null);
+
+  // ✅ Push FCM token to backend
   useEffect(() => {
     getFcmToken().then((token) => {
       if (token) {
@@ -19,20 +24,17 @@ function App() {
     });
   }, []);
 
-  return (
-    <div style={{
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      height: "100vh",
-      backgroundColor: "#111",
-      color: "#0ff",
-      fontSize: "2rem",
-      fontFamily: "sans-serif",
-    }}>
-      🚀 ULTRA SYSTEM DEPLOYED
-    </div>
-  );
-}
+  // ✅ Role-based redirect
+  useEffect(() => {
+    fetch('http://localhost:4000/api/dashboard', { credentials: 'include' })
+      .then(res => res.json())
+      .then(data => {
+        if (data.role === "admin") setRedirect("/admin");
+        else setRedirect("/dashboard");
+      })
+      .catch(() => setRedirect("/login"));
+  }, []);
 
-export default App;
+  if (!redirect) return <div className="text-white p-8">Loading...</div>;
+  return <Navigate to={redirect} />;
+}
