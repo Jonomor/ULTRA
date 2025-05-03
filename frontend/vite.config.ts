@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 
 export default defineConfig({
-  base: '/', //
+  base: '/',
   plugins: [react()],
   resolve: {
     alias: {
@@ -14,7 +14,6 @@ export default defineConfig({
     host: true,
     port: 5173,
     open: true,
-    // Disabled during production (Vercel has no localhost API)
     // proxy: {
     //   '/socket.io': {
     //     target: 'http://localhost:4000',
@@ -33,6 +32,3 @@ export default defineConfig({
     chunkSizeWarningLimit: 1000,
   },
 });
-
-
-

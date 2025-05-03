@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import React from "react";
 
 type Signal = {
   asset: string;
@@ -23,7 +22,7 @@ export function useProDashboardData() {
     async function fetchData() {
       try {
         const API = import.meta.env.VITE_API_URL;
-  
+
         // ✅ Fetch AI signals
         const signalRes = await fetch(`${API}/pro/signals/recent`, {
           credentials: "include",
@@ -31,7 +30,7 @@ export function useProDashboardData() {
         if (!signalRes.ok) throw new Error("Failed to fetch signals");
         const signalData = await signalRes.json();
         setSignals(signalData.signals || []);
-  
+
         // ✅ Fetch admin overrides
         const overrideRes = await fetch(`${API}/admin/override`, {
           credentials: "include",
@@ -43,14 +42,6 @@ export function useProDashboardData() {
           filterOverride: overrideData.filterOverride,
           forcedRegime: overrideData.forcedRegime || "none",
         });
-      } catch (err) {
-        console.error("Fetch error:", err);
-      }
-    }
-  
-    fetchData();
-  }, []);
-  
       } catch (err: any) {
         console.error("📉 useProDashboardData Error:", err);
         setError(err.message || "Unknown error");
