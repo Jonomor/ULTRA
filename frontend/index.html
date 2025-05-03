@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0a0a" />
+
+    <title>ULTRA SYSTEM | AI-Powered Trading Bots for Crypto, Forex, Stocks</title>
+    <meta name="description" content="Deploy military-grade AI trading bots. Real-time signals, adaptive strategies, and unmatched execution speed. Precision trading for retail, pro, and institutional users." />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="ULTRA SYSTEM | AI-Powered Trading Bots" />
+    <meta property="og:description" content="Deploy military-grade AI trading bots across crypto, forex, and stocks. Precision execution meets adaptive intelligence." />
+    <meta property="og:image" content="https://raw.githubusercontent.com/jonomor/assets/main/strategy-diagram.png" />
+    <meta property="og:url" content="https://jonomor.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Jonomor" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ULTRA SYSTEM | AI-Powered Trading Bots" />
+    <meta name="twitter:description" content="Deploy ULTRA SYSTEM AI bots. Unmatched signal speed and adaptive precision for every market condition." />
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/jonomor/assets/main/strategy-diagram.png" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://jonomor.com/" />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-80R6QGCLQD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-80R6QGCLQD');
+    </script>
+
+    <!-- Backend API URL -->
+    <meta name="api-url" content="https://ultra-by-jonomor.glitch.me" />
+
+    <link rel="manifest" href="/manifest.json" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Push Notification Registration -->
+    <script>
+      const PUBLIC_VAPID_KEY = 'BNywCR-BOu1xmgQI7tvbf0WqB6grH1hn5mjHnUscAaRPKW6CM8pb5j9dHag9KoKRjzMegV3h6rhLlSdsCCduHIs';
+      const BACKEND_URL = document.querySelector('meta[name="api-url"]')?.getAttribute('content');
+
+      if ('serviceWorker' in navigator && 'PushManager' in window && !window.__ultraPushRegistered) {
+        window.__ultraPushRegistered = true;
+        window.addEventListener('load', async () => {
+          try {
+            const reg = await navigator.serviceWorker.register('/service-worker.js');
+            console.log('✅ SW registered');
+
+            const subscription = await reg.pushManager.subscribe({
+              userVisibleOnly: true,
+              applicationServerKey: PUBLIC_VAPID_KEY,
+            });
+
+            console.log('🔔 Push subscribed:', subscription);
+
+            await fetch(`${BACKEND_URL}/api/subscribe`, {
+              method: 'POST',
+              body: JSON.stringify(subscription),
+              headers: { 'Content-Type': 'application/json' },
+            });
+
+            console.log('📤 Subscription sent to backend');
+          } catch (err) {
+            console.error('❌ SW error:', err);
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

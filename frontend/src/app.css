@@ -1,0 +1,42 @@
+/* app.css — ULTRA+ by Jonomor (Dark Version) */
+
+body {
+  margin: 0;
+  background: var(--bg);
+  font-family: 'Roboto', sans-serif;
+  color: var(--text);
+}
+
+#root {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.logo {
+  width: 72px;
+  margin-bottom: 1rem;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  color: var(--accent);
+  margin-bottom: 0.25rem;
+}
+
+.byline {
+  font-size: 1.1rem;
+  color: #ccc;
+  font-weight: 400;
+  display: block;
+  margin-top: 0.25rem;
+}
+
+.tagline {
+  color: #e0e0e0;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
