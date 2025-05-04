@@ -3,10 +3,10 @@ importScripts('https://www.gstatic.com/firebasejs/9.6.11/firebase-app-compat.js'
 importScripts('https://www.gstatic.com/firebasejs/9.6.11/firebase-messaging-compat.js');
 
 firebase.initializeApp({
-  apiKey: "AIzaSyDk3J1Ulb-g5XeGi82qdbLw_2-lCjZKrD8",
-  projectId: "ultra-plus-d5d92",
-  messagingSenderId: "10836291606570657",
-  appId: "1:1083629160657:web:09987799e3910bfcb0ddf0",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 });
 
 const messaging = firebase.messaging();
